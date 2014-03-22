@@ -2,6 +2,7 @@
 
 ## Type-Classes
   * Equal
+  * Show
 
 ## Collections
   * NonEmptyList
