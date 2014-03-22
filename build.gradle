@@ -12,7 +12,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'scala'
 
-group = "com.github.dcapwell.scalaz-examples"
+group = "com.github.scalaz-examples"
 
 repositories {
   mavenCentral()
