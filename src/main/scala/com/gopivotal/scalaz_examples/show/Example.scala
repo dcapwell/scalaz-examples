@@ -9,6 +9,7 @@ object Example extends App {
   // Why can't this be a compile time error?
 
   class Foo(val name: String)
+  class Bar(val name: String)
 
   val foo = new Foo("hello")
 
@@ -22,4 +23,7 @@ object Example extends App {
 
   // why do I have to do println(foo.shows)!  so much typing!
   foo.println
+
+  val bar = new Bar("won't compile")
+//  bar.println // let it fail to compile
 }
