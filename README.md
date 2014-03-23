@@ -36,3 +36,4 @@
   * Scalaz for the Rest of Us : http://www.youtube.com/watch?v=kcfIH3GYXMI
   * Learning scalaz : http://eed3si9n.com/learning-scalaz-day1
   * Learn You a Scalaz : https://github.com/jrwest/learn_you_a_scalaz/blob/master/1-intro.md
+  * Scala School : http://twitter.github.io/scala_school/type-basics.html
