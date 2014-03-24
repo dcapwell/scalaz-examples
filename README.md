@@ -4,9 +4,6 @@
   * Equal
   * Show
 
-## Collections
-  * NonEmptyList
-
 ## Monads and Monoids
   * State
   * Validate
@@ -19,6 +16,7 @@
   * boolean ? true | false
 
 ## Util
+  * NonEmptyList
   * Lens
   * Pointed
   * Collections Extensions
