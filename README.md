@@ -1,5 +1,12 @@
 # Examples using Scalaz
 
+## Build
+Building is controled by gradle, to make sure that scalaz/scala are downloaded, and the code compiles, run
+
+```
+./gradlew clean build
+```
+
 ## Type-Classes
   * Equal
   * Show

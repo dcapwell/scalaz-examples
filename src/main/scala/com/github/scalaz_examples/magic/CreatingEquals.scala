@@ -8,6 +8,7 @@ object CreatingEquals extends App {
   trait Equal[A] {
     def equal(a1: A, a2: A): Boolean
   }
+  // thats cool and all, but isn't this just Comparator in java?  How will this come together to give me ===?
 
   // so how do we decorate (pimp) other objects to get this behavior?  With scala implicits, you can define a function
   // that takes a A and creates a Opt[A] that has new methods.
