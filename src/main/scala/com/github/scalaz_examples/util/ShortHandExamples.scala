@@ -9,12 +9,13 @@ object ShortHandExamples extends App {
   val rightOpt = 3.some
 
   // match against both
-  leftOpt <|*|> rightOpt match {
+  // tuple is different than ->, since it uses Apply, which is like point, which will create a new Option[(_, _)]
+  leftOpt tuple rightOpt match {
     case Some((left, right)) => (left, right).println
     case None => "nothing found".println
   }
 
-  leftOpt <|*|> none match {
+  leftOpt tuple none match {
     case Some((_,_)) => assert(false, "shouldn't happen")
     case None => "None found!".println
   }
