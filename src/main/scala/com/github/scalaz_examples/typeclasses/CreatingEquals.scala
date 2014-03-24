@@ -17,6 +17,7 @@ object CreatingEquals extends App {
     def =/=(a2: A)(implicit eq: Equal[A]): Boolean = !eq.equal(self, a2)
     def println(prefix: String = ""): Unit = Predef.println(s"${prefix}${self}") // too lazy to include show
   }
+  import scala.language.implicitConversions
   implicit def toInstance[A](a: A): InstanceOpt[A] = new InstanceOpt[A] {def self: A = a}
   // an implication with Int
   implicit val intEqual: Equal[Int] = new Equal[Int] {
