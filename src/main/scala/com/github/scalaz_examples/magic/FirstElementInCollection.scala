@@ -1,4 +1,4 @@
-package com.github.scalaz_examples.util
+package com.github.scalaz_examples.magic
 
 object FirstElementInCollection extends App {
   // some times you want to add behaviors to a given collection; say List[A].  You could do the following

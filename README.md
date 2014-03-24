@@ -23,11 +23,9 @@
   * Functor
   * Memo/memoization
 
-## Use-cases
-  * Dependency Injection
-
 ## How the magic happens
   * Type-Classes
+  * Higher-Kinds
 
 ## References
   * Scalaz - The Good Parts : http://www.youtube.com/watch?v=jPdHQZnF56A

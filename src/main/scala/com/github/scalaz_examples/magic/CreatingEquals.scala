@@ -1,4 +1,4 @@
-package com.github.scalaz_examples.typeclasses
+package com.github.scalaz_examples.magic
 
 object CreatingEquals extends App {
   // as you see in the equal package, the equal typeclass can be very useful to make sure that
