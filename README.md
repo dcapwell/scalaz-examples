@@ -10,10 +10,12 @@ Building is controled by gradle, to make sure that scalaz/scala are downloaded, 
 ## Type-Classes
   * Equal
   * Show
+  * Applicative
+  * Order
 
 ## Monads and Monoids
   * State
-  * Validate
+  * Validation
   * Reader/Writer
   * Free
 
@@ -42,3 +44,4 @@ Building is controled by gradle, to make sure that scalaz/scala are downloaded, 
   * Scala School : http://twitter.github.io/scala_school/type-basics.html
   * The Typeclass Pattern - An Alternative to Inheritance : https://www.youtube.com/watch?v=yYo0gANYViE&list=PLk1rxAmpqRVLeBfjaQnULpDrN-FI9BOij
   * Brian Beckman: Don't fear the Monad : https://www.youtube.com/watch?v=ZhuHCtR3xq8&list=PLk1rxAmpqRVLeBfjaQnULpDrN-FI9BOij
+  * Learning Scalaz : https://thenewcircle.com/s/post/1578/learning_scalaz_eugene_yokota_video
