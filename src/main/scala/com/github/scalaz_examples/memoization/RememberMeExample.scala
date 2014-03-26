@@ -24,6 +24,7 @@ object RememberMeExample extends App {
     println(s"Timed(${sw.elapsed(TimeUnit.MILLISECONDS)}}): ${data}")
     data
   }
+  // ignore the fact that this takes longer in output, most of the wait is class loading
   val cache: Cache[Int, Int] = CacheBuilder.
     newBuilder().
     build().
@@ -43,15 +44,17 @@ object RememberMeExample extends App {
   timed(longRunningMemo(2))
 
   // can even combine the both if you want a more powerful cache
-  val longRunningMemoGuava = Memo.memo {method: (Int => Int) =>
-    val cache: Cache[Int, Int] = CacheBuilder.
+  def guavaMemo[K, V]: Memo[K, V] = Memo.memo[K, V] {method: (K => V) =>
+    val cache: Cache[K, V] = CacheBuilder.
       newBuilder().
       build().
-      asInstanceOf[Cache[Int, Int]]
+      asInstanceOf[Cache[K, V]]
 
-    def ret(key: Int): Int = cache.get(key, method(key))
+    def ret(key: K): V = cache.get(key, method(key))
     ret
-  }(longRunning)
+  }
+
+  val longRunningMemoGuava = guavaMemo(longRunning)
 
   timed(longRunningMemoGuava(1))
   timed(longRunningMemoGuava(1))
