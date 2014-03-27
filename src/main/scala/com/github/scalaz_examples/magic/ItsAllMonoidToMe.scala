@@ -82,6 +82,9 @@ object ItsAllMonoidToMe extends App {
   ((Ordering.GT: Ordering) |+| (Ordering.LT: Ordering)).println
   // GT
 
+  ((Ordering.LT: Ordering) |+| (Ordering.GT: Ordering)) |+| (Ordering.LT: Ordering) assert_=== (Ordering.LT: Ordering) |+| ((Ordering.GT: Ordering) |+| (Ordering.LT: Ordering))
+  ((Ordering.GT: Ordering) |+| (Ordering.LT: Ordering)) |+| (Ordering.GT: Ordering) assert_=== (Ordering.GT: Ordering) |+| ((Ordering.LT: Ordering) |+| (Ordering.GT: Ordering))
+
   (Monoid[Ordering].zero |+| (Ordering.GT: Ordering)).println
   // GT
 
