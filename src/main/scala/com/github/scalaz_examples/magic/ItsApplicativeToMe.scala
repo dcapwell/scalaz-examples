@@ -76,3 +76,14 @@ object ItsApplicativeToMe extends App {
   // so because of <*>, I can now compose applicatives together!
   // |@| aka oink operator aka macaulay culkin operator = win!
 }
+
+object ApplicativeFun extends App {
+  // lets have some fun with this
+  // Let’s try implementing a function that takes a list of applicatives and returns an applicative that has a list as
+  // its result value. We’ll call it sequenceA.
+  def sequenceA[F[_]: Applicative, A](list: List[F[A]]): F[List[A]] = list match {
+    case Nil => (Nil: List[A]).point[F]
+    case x :: xs => (x |@| sequenceA(xs)) {_ :: _}
+  }
+  sequenceA(List(1.some, 2.some, 3.some)).println
+}
