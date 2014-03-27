@@ -19,4 +19,6 @@ object NelExample extends App {
 
   // returns List[Int], since the tail size is unknown
   list.tail.println
+
+  implicitly[Monoid[Int]]
 }

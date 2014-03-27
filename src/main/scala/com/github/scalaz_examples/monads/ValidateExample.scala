@@ -72,6 +72,8 @@ object ObjectValidationExample extends App {
       validateUserName(foo).toValidationNel |@|
       validateUserId(foo).toValidationNel |@|
       validateUserAge(foo).toValidationNel) ((a, b, c, d) => foo)
+  // ok, so wtf is |@|?  Well, you have two Validation[A] and you want to compose them.  Ok, so how does that work?
+  // Take a look at ItsApplicativeToMe.scala
 
   // prints nothing cause it failed
   for {user <- validateUserAll(User(null, null, 5))} yield user.println
