@@ -81,9 +81,71 @@ object ApplicativeFun extends App {
   // lets have some fun with this
   // Let’s try implementing a function that takes a list of applicatives and returns an applicative that has a list as
   // its result value. We’ll call it sequenceA.
+  import scala.language.higherKinds
   def sequenceA[F[_]: Applicative, A](list: List[F[A]]): F[List[A]] = list match {
     case Nil => (Nil: List[A]).point[F]
     case x :: xs => (x |@| sequenceA(xs)) {_ :: _}
   }
   sequenceA(List(1.some, 2.some, 3.some)).println
+
+  // so before we move on, lets explore "lift".  When going over examples of functional programming, you will see
+  // lift and currying constantly, so knowing how they work and when to use them is key to understanding
+  // functors, applicative functors, and monads
+
+  def foo(a1: Int, a2: Int): Int = a1 + a2
+  // foo takes an a1 and a2 at the same time and returns an Int, so (Int, Int) => Int
+  // what does currying do?
+
+  val fooC = (foo _).curried
+  // Int => Int => Int
+  // so we took a binary function foo, and made it a unary function that returns a function Int => Int
+
+  // why are we talking about this?  Well for one <*> seems confusing when you would ever use it, so lets go over
+  // an example
+  val one = 1.some
+  val two = 2.some
+
+  // so we have two Option[Int] instances and a binary function foo that works on Ints, so how do we make them
+  // play nicly with each other?  Remember, functional programming is all about composing functions together, so
+  // how does composition work in this case?
+  // Option is a functor, so it takes a map from Int to some other type: Int => B
+  // so lets try currying foo!
+  val oneCurried = one map fooC
+  // Option[Int => Int]
+  // now that the types match for <*>, we can apply two
+  (two <*> oneCurried).println
+  // Some(3)
+
+  // so <*> lets us take a unary functor and work with binary functions!
+
+  // lets try with three params; simpler to curry up front for this example
+  def bar(a: Int)(b: Int)(c: Int): Int = a + b + c
+  val three = 3.some
+
+  three <*> (two <*> one.map(bar))
+  // Some(6)
+
+  // with currying and applicative functors, you can work with generic functions that know nothing about the
+  // applicative functor wrapping the object, but only know about the object itself
+
+  // so how does this get us to lift?
+  val liftedOptOfInt = Functor[Option].lift(bar)
+  // Option[Int] => Option[Int => (Int => Int)]
+
+  // as we see above, lift takes a function A => B and returns F[A] => F[B]
+
+  // this gives us something very similar to what we were doing above, but lets us do it at a more generic
+  // sense.  Rather than mapping over a given instance of F[A], I can pass in any F[A], apply it to the function
+  // and get back the results
+
+  three <*> (two <*> liftedOptOfInt(one))
+  // Some(6)
+
+  // my main issue with this is the order in which I must apply things
+  // I look at the function def and type, its left to right
+  // I see the above code and its applied right to left
+  // Is there a way to "swap" the oder?
+  // I really want to write liftedOptOfInt(one) <*> two <*> three!
+
+  // I am not hinting at anything!  I just don't know yet!
 }
