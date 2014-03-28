@@ -47,6 +47,7 @@ object Point extends App {
   // ok, so I can do this, but why would I since I can just wrap the value directly?
   // main use-case I can see is that anything that works on higher-kinds can construct them without
   // needing to know how
+  import scala.language.higherKinds
   def wrapAndString[M[_] : Applicative, A](data: A) = Applicative[M].point(s"$data")
   wrapAndString[List, Int](1).println
 }
