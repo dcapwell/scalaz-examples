@@ -18,9 +18,26 @@ repositories {
   mavenCentral()
 }
 
+ext {
+    versions = [
+        scala: '2.10.3',
+        scala_base: '2.10',
+        scalaz: '7.0.6'
+    ]
+}
+def scalazVersion
+
 dependencies {
-  compile 'org.scala-lang:scala-library:2.10.3'
-  compile 'org.scalaz:scalaz-core_2.10:7.0.6'
-  compile 'com.google.guava:guava:16.0.1' // for memoization example
-  compile 'com.google.code.findbugs:jsr305:1.3.9' // scalac doesn't like optional dependencies
+  compile "org.scala-lang:scala-library:${versions.scala}"
+
+  compile "org.scalaz:scalaz-core_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz:scalaz-concurrent_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz:scalaz-scalacheck-binding_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz:scalaz-effect_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz:scalaz-typelevel_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz:scalaz-iteratee_${versions.scala_base}:${versions.scalaz}"
+
+  // extras
+  compile "com.google.guava:guava:16.0.1" // for memoization example
+  compile "com.google.code.findbugs:jsr305:1.3.9" // scalac doesn't like optional dependencies
 }
