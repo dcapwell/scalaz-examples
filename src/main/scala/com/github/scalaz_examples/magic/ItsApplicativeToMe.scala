@@ -96,7 +96,18 @@ object ApplicativeFun extends App {
   // foo takes an a1 and a2 at the same time and returns an Int, so (Int, Int) => Int
   // what does currying do?
 
-  val fooC = (foo _).curried
+  // when you use def to create a function, that function isn't really a Function2 instance.
+  // So even though the IDE will say that foo can use the functions from Function2, you can't without
+  // partially applying it to make a new function
+
+  val res24 = foo _
+  // (Int, Int) => Int = <function2>
+
+  // what happened here is that we took the function foo, and set it to val res24, but the _ notation says that
+  // the arguments of foo need to be filled in, so the type of res24 is (Int, Int) => Int
+  // once we do that, we have access to the methods on Function2, mainly curried
+
+  val fooC = res24.curried
   // Int => Int => Int
   // so we took a binary function foo, and made it a unary function that returns a function Int => Int
 
