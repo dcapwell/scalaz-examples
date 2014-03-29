@@ -13,9 +13,8 @@ Building is controled by gradle, to make sure that scalaz/scala are downloaded, 
   * Applicative
   * Order
 
-## Monads and Monoids
+## Monads
   * State
-  * Validation
   * Reader/Writer
   * Free
 
@@ -30,11 +29,17 @@ Building is controled by gradle, to make sure that scalaz/scala are downloaded, 
   * Pointed
   * Collections Extensions
   * Functor
+  * Validation
   * Memo/memoization
 
 ## How the magic happens
   * Type-Classes
   * Higher-Kinds
+
+## IO
+  * IO Monad
+    * How to handle errors
+  * Processes
 
 ## References
   * Scalaz - The Good Parts : http://www.youtube.com/watch?v=jPdHQZnF56A
