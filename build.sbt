@@ -21,3 +21,7 @@ libraryDependencies += "org.scalaz" % "scalaz-iteratee_2.10" % scalazVersion
 libraryDependencies += "com.google.guava" % "guava" % "16.0.1"
 
 libraryDependencies += "com.google.code.findbugs" % "jsr305" % "1.3.9"
+
+resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
+
+libraryDependencies += "org.scalaz.stream" %% "scalaz-stream" % "0.3.1"

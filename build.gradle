@@ -16,6 +16,7 @@ group = "com.github.scalaz-examples"
 
 repositories {
   mavenCentral()
+  maven {url "http://dl.bintray.com/scalaz/releases"}
 }
 
 ext {
@@ -36,6 +37,7 @@ dependencies {
   compile "org.scalaz:scalaz-effect_${versions.scala_base}:${versions.scalaz}"
   compile "org.scalaz:scalaz-typelevel_${versions.scala_base}:${versions.scalaz}"
   compile "org.scalaz:scalaz-iteratee_${versions.scala_base}:${versions.scalaz}"
+  compile "org.scalaz.stream:scalaz-stream_2.10:0.3.1"
 
   // extras
   compile "com.google.guava:guava:16.0.1" // for memoization example
