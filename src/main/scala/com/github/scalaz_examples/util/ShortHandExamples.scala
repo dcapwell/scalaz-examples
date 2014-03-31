@@ -42,6 +42,12 @@ object ShortHandExamples extends App {
   20 |> {(value) => "hi"}
   // "hi"
 
+  // with the |> syntax, you can apply the function after the expression has completed
+  1 + 2 + 3 |> {_.point[List]}
+  // List(6)
+  1 + 2 + 3 |> {_ * 6}
+  // 36
+
   // what if you are working with java, and something can be null and you want to getOrElse it?
   val javaVal: String = null
   javaVal ?? "not null!"
@@ -61,4 +67,14 @@ object ShortHandExamples extends App {
   // ranges
   1 |-> 10
   // List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+  // have you ever wanted to "lift" a value into a applicative functor and if the value matches some expression
+  // to apply a different constructor?  Neither have I, but thats where visit comes in!
+
+  42 visit { case x if x % 2 == 0 => List(x / 2) }
+  // List(21)
+  43 visit { case x if x % 2 == 0 => List(x / 2) }
+  // List(43)
+  // if the partial function matches the element, then the function is applied
+  // if not, then Pointed[F].point(_) is used
 }
