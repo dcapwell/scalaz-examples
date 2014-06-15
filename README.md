@@ -52,3 +52,4 @@ Building is controled by gradle, to make sure that scalaz/scala are downloaded, 
   * Learning Scalaz : https://thenewcircle.com/s/post/1578/learning_scalaz_eugene_yokota_video
   * Hacking Scala : http://hacking-scala.org/post/49050104489/scalaz-resources-for-beginners
   * Practical Scalaz : https://skillsmatter.com/skillscasts/2518-practical-scalaz-2518
+  * Wrapping Imperative APIs in a functional one : https://skillsmatter.com/skillscasts/4943-teaching-an-old-dog-new-tricks-wrapping-an-imperative-api-in-a-functional-one#video
